@@ -15,7 +15,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/{userId}/updateBio")
+    @PostMapping("/updateBio/{userId}")
     public ResponseEntity<String> updateBio(@PathVariable Long userId, @RequestBody UpdateBioDto dto){
         userService.updateProfileBio(userId, dto);
         return new ResponseEntity<>(dto.getBio(), HttpStatus.ACCEPTED);

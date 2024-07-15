@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -72,6 +73,12 @@ public class PostServiceImpl implements PostService {
             throw new UnauthorizedException("USER WITH ID - " + userId + " NOT AUTHORISED");
         }
         return "Post Deleted Successfully";
+    }
+
+    @Override
+    public List<Post> findAllPostsByUser(Long userId) {
+        User user = serviceHelper.findUserById(userId);
+        return postRepository.findByAuthorOrderByCreatedDateDesc(user);
     }
 
 }

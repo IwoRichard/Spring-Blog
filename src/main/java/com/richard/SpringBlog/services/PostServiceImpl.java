@@ -3,7 +3,6 @@ package com.richard.SpringBlog.services;
 import com.richard.SpringBlog.dtos.PostDto;
 import com.richard.SpringBlog.entities.Post;
 import com.richard.SpringBlog.entities.User;
-import com.richard.SpringBlog.exceptions.ResourceNotFoundException;
 import com.richard.SpringBlog.exceptions.UnauthorizedException;
 import com.richard.SpringBlog.repositories.PostRepository;
 import com.richard.SpringBlog.repositories.UserRepository;
@@ -27,7 +26,6 @@ public class PostServiceImpl implements PostService {
     private FirebaseStorageService firebaseStorageService;
     @Autowired
     private ServiceHelper serviceHelper;
-
 
     @Override
     public Post createPost(Long userId, PostDto postDto, MultipartFile file) {

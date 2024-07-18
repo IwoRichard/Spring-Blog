@@ -20,10 +20,12 @@ public class ServiceHelper {
     @Autowired
     private PostRepository postRepository;
 
+
     public User findUserById(Long userId) {
         return userRepository.findById(userId).orElseThrow(
                 () -> new ResourceNotFoundException("User with ID - " + userId + " not found"));
     }
+
     public Post findPostById(Long id){
         return postRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Post with ID - " + id + " not found"));

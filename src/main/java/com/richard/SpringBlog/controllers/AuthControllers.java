@@ -1,7 +1,10 @@
 package com.richard.SpringBlog.controllers;
 
+import com.richard.SpringBlog.dtos.LoginDto;
+import com.richard.SpringBlog.dtos.LoginResponse;
 import com.richard.SpringBlog.dtos.RegisterDto;
 import com.richard.SpringBlog.entities.User;
+import com.richard.SpringBlog.services.JwtService;
 import com.richard.SpringBlog.services.interfaces.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,10 +20,25 @@ public class AuthControllers {
 
     @Autowired
     private AuthService authService;
+    @Autowired
+    private JwtService jwtService;
 
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody RegisterDto registerDto){
         User user = authService.registerUser(registerDto);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginDto loginDto) {
+        User authenticatedUser = authService.loginUser(loginDto);
+
+        String jwtToken = jwtService.generateToken(authenticatedUser);
+
+        LoginResponse loginResponse = new LoginResponse();
+        loginResponse.setAccessToken(jwtToken);
+        loginResponse.setUser(authenticatedUser);
+
+        return ResponseEntity.ok(loginResponse);
     }
 }

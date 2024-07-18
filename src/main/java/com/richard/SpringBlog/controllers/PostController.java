@@ -19,12 +19,12 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @GetMapping("/{userId}")
+    @GetMapping("/get/{userId}")
     public ResponseEntity<List<Post>> getPostsByUser(@PathVariable Long userId){
         return new ResponseEntity<>(postService.findAllPostsByUser(userId), HttpStatus.OK);
     }
 
-    @PostMapping("/createPost/{userId}")
+    @PostMapping("/create/{userId}")
     public ResponseEntity<Post> createPost(
             @PathVariable Long userId,
             @RequestParam(name = "file")MultipartFile file,

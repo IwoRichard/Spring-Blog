@@ -1,4 +1,4 @@
-package com.richard.SpringBlog.configs;
+package com.richard.SpringBlog.configs.Security;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;

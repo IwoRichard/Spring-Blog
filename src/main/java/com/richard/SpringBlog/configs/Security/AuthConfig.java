@@ -1,4 +1,4 @@
-package com.richard.SpringBlog.configs;
+package com.richard.SpringBlog.configs.Security;
 
 import com.richard.SpringBlog.repositories.UserRepository;
 import lombok.AllArgsConstructor;

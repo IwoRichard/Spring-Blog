@@ -1,4 +1,4 @@
-package com.richard.SpringBlog.services;
+package com.richard.SpringBlog.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

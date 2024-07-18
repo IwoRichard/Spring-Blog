@@ -3,12 +3,12 @@ package com.richard.SpringBlog.services;
 import com.richard.SpringBlog.entities.Comment;
 import com.richard.SpringBlog.entities.Post;
 import com.richard.SpringBlog.entities.User;
-import com.richard.SpringBlog.exceptions.ResourceNotFoundException;
 import com.richard.SpringBlog.exceptions.UnauthorizedException;
 import com.richard.SpringBlog.repositories.CommentRepository;
 import com.richard.SpringBlog.repositories.PostRepository;
 import com.richard.SpringBlog.repositories.UserRepository;
 import com.richard.SpringBlog.services.interfaces.CommentService;
+import com.richard.SpringBlog.utils.ServiceHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

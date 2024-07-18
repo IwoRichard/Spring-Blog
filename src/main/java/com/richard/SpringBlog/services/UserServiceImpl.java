@@ -2,10 +2,10 @@ package com.richard.SpringBlog.services;
 
 import com.richard.SpringBlog.dtos.UpdateBioDto;
 import com.richard.SpringBlog.entities.User;
-import com.richard.SpringBlog.exceptions.ResourceNotFoundException;
 import com.richard.SpringBlog.repositories.UserRepository;
 import com.richard.SpringBlog.services.interfaces.FirebaseStorageService;
 import com.richard.SpringBlog.services.interfaces.UserService;
+import com.richard.SpringBlog.utils.ServiceHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

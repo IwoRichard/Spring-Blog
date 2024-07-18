@@ -8,12 +8,15 @@ import com.richard.SpringBlog.repositories.PostRepository;
 import com.richard.SpringBlog.repositories.UserRepository;
 import com.richard.SpringBlog.services.interfaces.FirebaseStorageService;
 import com.richard.SpringBlog.services.interfaces.PostService;
+import com.richard.SpringBlog.utils.ServiceHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -74,9 +77,10 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> findAllPostsByUser(Long userId) {
+    public Page<Post> findAllPostsByUser(Long userId, int pageNo, int pageSize) {
         User user = serviceHelper.findUserById(userId);
-        return postRepository.findByAuthorOrderByCreatedDateDesc(user);
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        return postRepository.findByAuthorOrderByCreatedDateDesc(user, pageable);
     }
 
 }

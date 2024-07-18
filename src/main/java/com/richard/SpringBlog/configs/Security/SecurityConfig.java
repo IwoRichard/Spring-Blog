@@ -1,6 +1,6 @@
-package com.richard.SpringBlog.configs;
+package com.richard.SpringBlog.configs.Security;
 
-import com.richard.SpringBlog.configs.JwtAuthenticationFilter;
+import com.richard.SpringBlog.configs.Security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;

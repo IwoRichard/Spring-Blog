@@ -1,10 +1,11 @@
 package com.richard.SpringBlog.controllers;
 
+import com.richard.SpringBlog.dtos.PaginatedPostResponse;
 import com.richard.SpringBlog.dtos.PostDto;
 import com.richard.SpringBlog.entities.Post;
-import com.richard.SpringBlog.services.ServiceHelper;
 import com.richard.SpringBlog.services.interfaces.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +21,21 @@ public class PostController {
     private PostService postService;
 
     @GetMapping("/get/{userId}")
-    public ResponseEntity<List<Post>> getPostsByUser(@PathVariable Long userId){
-        return new ResponseEntity<>(postService.findAllPostsByUser(userId), HttpStatus.OK);
+    public ResponseEntity<PaginatedPostResponse> getPostsByUser(
+            @PathVariable Long userId,
+            @RequestParam(defaultValue = "0", value = "pageNo") int pageNo,
+            @RequestParam(defaultValue = "10", value = "pageSize") int pageSize) {
+
+        Page<Post> postPage = postService.findAllPostsByUser(userId, pageNo, pageSize);
+        PaginatedPostResponse paginatedPostResponse = PaginatedPostResponse.builder()
+                .pageNumber(postPage.getNumber())
+                .pageSize(postPage.getSize())
+                .totalElements(postPage.getTotalElements())
+                .totalPages(postPage.getTotalPages())
+                .content(postPage.getContent())
+                .build();
+
+        return new ResponseEntity<>(paginatedPostResponse, HttpStatus.OK);
     }
 
     @PostMapping("/create/{userId}")

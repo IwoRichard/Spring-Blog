@@ -1,4 +1,4 @@
-package com.richard.SpringBlog.services;
+package com.richard.SpringBlog.utils;
 
 import com.richard.SpringBlog.entities.Comment;
 import com.richard.SpringBlog.entities.Post;

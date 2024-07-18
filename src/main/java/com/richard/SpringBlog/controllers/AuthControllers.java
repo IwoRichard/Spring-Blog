@@ -4,7 +4,7 @@ import com.richard.SpringBlog.dtos.LoginDto;
 import com.richard.SpringBlog.dtos.LoginResponse;
 import com.richard.SpringBlog.dtos.RegisterDto;
 import com.richard.SpringBlog.entities.User;
-import com.richard.SpringBlog.services.JwtService;
+import com.richard.SpringBlog.utils.JwtService;
 import com.richard.SpringBlog.services.interfaces.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

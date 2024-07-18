@@ -1,6 +1,6 @@
-package com.richard.SpringBlog.configs;
+package com.richard.SpringBlog.configs.Security;
 
-import com.richard.SpringBlog.services.JwtService;
+import com.richard.SpringBlog.utils.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
